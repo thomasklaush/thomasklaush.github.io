@@ -1,303 +1,770 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<!-- SITE TITLE -->
-	<title>Blaster Responsive Template</title>
-<!--
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thomas — Software Engineer & Technical Founder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-Blaster Template
+    :root {
+      --bg:        #0a0a0b;
+      --surface:   #111114;
+      --border:    #1e1e24;
+      --accent:    #00e5a0;
+      --accent2:   #0057ff;
+      --text:      #e8e8ec;
+      --muted:     #6b6b78;
+      --mono:      'JetBrains Mono', monospace;
+      --serif:     'DM Serif Display', serif;
+      --sans:      'Instrument Sans', sans-serif;
+    }
 
-http://www.templatemo.com/tm-472-blaster
+    html { scroll-behavior: smooth; }
 
--->
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="keywords" content="">
-	<meta name="description" content="">
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-	<!-- STYLESHEET CSS FILES -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/animate.min.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/nivo-lightbox.css">
-	<link rel="stylesheet" href="css/nivo_themes/default/default.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    /* ── GRID BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,160,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,160,.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(10,10,11,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 48px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-inner { max-width: 780px; }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--accent);
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: 1.0;
+      letter-spacing: -.02em;
+      margin-bottom: 8px;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-subtitle {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: .06em;
+      margin-bottom: 32px;
+    }
+    .hero-desc {
+      font-size: 17px;
+      color: #a8a8b4;
+      max-width: 580px;
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: all .2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      font-weight: 500;
+    }
+    .btn-primary:hover { background: #00ffc0; transform: translateY(-1px); }
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 48px;
+      border-top: 1px solid var(--border);
+    }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1;
+      margin-bottom: 56px;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .about-text p {
+      color: #a8a8b4;
+      font-weight: 300;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .about-facts {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .fact-row {
+      display: flex;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      gap: 24px;
+    }
+    .fact-row:last-child { border-bottom: none; }
+    .fact-key {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      min-width: 100px;
+      padding-top: 2px;
+    }
+    .fact-val {
+      font-size: 14px;
+      color: var(--text);
+    }
+    .fact-val a { color: var(--accent); text-decoration: none; }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 24px;
+      transition: border-color .2s, transform .2s;
+    }
+    .skill-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .skill-card-icon {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+    .skill-card h3 {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .skill-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      padding: 3px 9px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
+    }
+
+    /* ── PROJECTS ── */
+    .projects-list { display: flex; flex-direction: column; gap: 0; }
+    .project-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: start;
+      gap: 32px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .project-item:first-child { border-top: 1px solid var(--border); }
+    .project-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .1em;
+      padding-top: 6px;
+    }
+    .project-content h3 {
+      font-family: var(--serif);
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+    .project-tags { margin-bottom: 12px; }
+    .project-desc {
+      font-size: 14px;
+      color: #a8a8b4;
+      font-weight: 300;
+      max-width: 560px;
+    }
+    .project-badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .badge-founder { background: rgba(0,229,160,.12); color: var(--accent); border: 1px solid rgba(0,229,160,.25); }
+    .badge-freelance { background: rgba(0,87,255,.12); color: #5b9bff; border: 1px solid rgba(0,87,255,.25); }
+    .badge-oss { background: rgba(120,120,140,.1); color: var(--muted); border: 1px solid var(--border); }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 40px; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 40px;
+    }
+    .exp-meta {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .exp-meta .company {
+      font-size: 14px;
+      color: var(--accent);
+      margin-bottom: 4px;
+      letter-spacing: .04em;
+    }
+    .exp-meta .period { letter-spacing: .06em; }
+    .exp-body h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .exp-body p {
+      font-size: 14px;
+      color: #a8a8b4;
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+    #contact h2 { margin-bottom: 20px; }
+    #contact .lead {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+    .contact-grid {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all .2s;
+      color: var(--text);
+    }
+    .contact-card:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .contact-card .ci {
+      font-family: var(--mono);
+      font-size: 18px;
+    }
+    .contact-card .ct small {
+      display: block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .contact-card .ct span { font-size: 14px; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: var(--muted);
+    }
+    footer span { color: var(--accent); }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      #hero, section { padding-left: 24px; padding-right: 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .project-item { grid-template-columns: 1fr; gap: 12px; }
+      .project-num { display: none; }
+      .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    }
+  </style>
 </head>
-<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+<body>
 
-<!-- navigation section -->
-<section class="navbar navbar-fixed-top custom-navbar" role="navigation">
-	<div class="container">
-		<div class="navbar-header">
-			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="icon icon-bar"></span>
-				<span class="icon icon-bar"></span>
-				<span class="icon icon-bar"></span>
-			</button>
-			<a href="#" class="navbar-brand"><span class="bold">Blaster</span></a>
-		</div>
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#home" class="smoothScroll">HOME</a></li>
-				<li><a href="#about" class="smoothScroll">ABOUT</a></li>
-				<li><a href="#portfolio" class="smoothScroll">PORTFOLIO</a></li>
-				<li><a href="#team" class="smoothScroll">TEAM</a></li>
-				<li><a href="#contact" class="smoothScroll">CONTACT</a></li>
-			</ul>
-		</div>
-	</div>
-</section>
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">TH // Portfolio</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-<!-- home section -->
-<section id="home">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<hr>
-				<h3><span class="bold">WE ARE a DIGITAL STUDIO</h3>
-				<h1 class="heading">from California</h1>
-				<a href="#about" class="smoothScroll btn btn-default">Our Process</a>
-			</div>
-		</div>
-	</div>		
-</section>
+  <!-- HERO -->
+  <div id="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">Software Engineer · Technical Founder · Salzburg, Austria</div>
+      <h1>Thomas<br><em>Huttegger</em></h1>
+      <p class="hero-subtitle">// Embedded Systems · Mobile · Cloud · Health & Sports Tech</p>
+      <p class="hero-desc">
+        I build at the intersection of hardware and software — from nRF chips and BLE firmware
+        to Flutter apps, AWS backends, and sensor-driven analytics platforms.
+        Founder of Kubikos. Freelancer for complex, meaningful systems.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Get in Touch ↓</a>
+        <a href="#projects" class="btn btn-ghost">View Projects</a>
+        <a href="#" class="btn btn-ghost" id="cv-download">Download CV ↗</a>
+      </div>
+    </div>
+  </div>
 
-<!-- about section -->
-<section id="about">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 text-center">
-				<h1 class="heading bold">ABOUT US</h1>
-				<h2 class="subheading">WE ARE TALANTED DESIGNERS &amp; DEVELOPERS</h2>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.6s">
-				<i class="fa fa-cloud"></i>
-					<h3>Planning</h3>
-					<p>Blaster is free responsive layout from <a rel="nofollow" href="http://www.templatemo.com" target="_parent">templatemo</a>. Credit goes to <a rel="nofollow" href="https://pixabay.com" target="_parent">Pixabay</a> for images. You can change icons by looking at <a rel="nofollow" href="https://fortawesome.github.io/Font-Awesome/icons/" target="_parent">FontAwesome icons</a>. Thank you for visiting our website.</p>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="0.9s">
-				<i class="fa fa-laptop"></i>
-					<h3>Developing</h3>
-					<p>Example: <a href="#about">&lt;i class=&quot;fa fa-phone&quot;&gt;&lt;/i&gt;</a> for phone icon. <a href="#about">&lt;i class=&quot;fa fa-mobile&quot;&gt;&lt;/i&gt;</a> for mobile icon. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-4 wow fadeInUp" data-wow-delay="1s">
-				<i class="fa fa-globe"></i>
-					<h3>Launching</h3>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteu sunt in culpa qui officia deserunt mollit anim id.</p>
-			</div>
-			<hr>
-			<div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.6s">
-				<img src="images/about-img.png" class="img-responsive" alt="about img">
-			</div>
-			<div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.9s">
-				<h3>Our Focus</h3>
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-				<span><i class="fa fa-mobile"></i> Mobile Apps</span>
-					<div class="progress">
-						<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-					</div>
-				<span><i class="fa fa-link"></i> Web Development</span>
-					<div class="progress">
-						<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-					</div>
-				<span><i class="fa fa-cloud"></i> Cloud Computing</span>
-					<div class="progress">
-						<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-					</div>
-			</div>
-		</div>
-	</div>
-</section>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">01 / About</div>
+    <h2>Engineer &<br><em>Builder</em></h2>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>
+          Based in Faistenau/Salzburg, Austria, I run <strong>Sport Performance Systems e.U.</strong>
+          as a freelance software engineering consultancy, and co-founded <strong>Kubikos GmbH</strong> —
+          a patented sensor-based strength training analytics platform integrating into gym equipment
+          for real-time AI-driven performance data.
+        </p>
+        <p>
+          My stack spans the full depth: from writing firmware for Nordic Semiconductor nRF52840 chips,
+          to building Flutter mobile apps, designing AWS Amplify cloud architectures, and working with
+          specialised systems like Firebird databases and HL7 healthcare messaging.
+        </p>
+        <p>
+          I'm particularly at home in technically complex, cross-disciplinary projects — sports tech,
+          healthcare IT, renewable energy management — where precision engineering meets real product impact.
+        </p>
+      </div>
+      <div class="about-facts reveal">
+        <div class="fact-row">
+          <span class="fact-key">Location</span>
+          <span class="fact-val">Faistenau / Salzburg, Austria</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Company</span>
+          <span class="fact-val">Sport Performance Systems e.U.</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Venture</span>
+          <span class="fact-val">Kubikos GmbH (Co-Founder)</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Languages</span>
+          <span class="fact-val">German (native) · English (fluent)</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Availability</span>
+          <span class="fact-val">Open to freelance projects</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Domains</span>
+          <span class="fact-val">Sports Tech · Health IT · Energy · IoT</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- portfolio section -->
-<div id="portfolio">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<h1 class="heading bold">PORTFOLIO</h1>
-				<h2 class="subheading">MOBILE, WEB AND BRAND IDENTITY</h2>
-				<!-- ISO section -->
-				<div class="iso-section">
-					<ul class="filter-wrapper clearfix">
-                   		 <li><a href="#" data-filter="*" class="selected opc-main-bg">All</a></li>
-                   		 <li><a href="#" class="opc-main-bg" data-filter=".html">Html</a></li>
-                   		 <li><a href="#" class="opc-main-bg" data-filter=".photoshop">Photoshop</a></li>
-                    	 <li><a href="#" class="opc-main-bg" data-filter=".wordpress">Wordpress</a></li>
-                    	 <li><a href="#" class="opc-main-bg" data-filter=".mobile">Mobile</a></li>
-               		</ul>
-               		<div class="iso-box-section wow fadeIn" data-wow-delay="0.9s">
-               			<div class="iso-box-wrapper col4-iso-box">
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">02 / Skills</div>
+    <h2>Technical<br><em>Expertise</em></h2>
+    <div class="skills-grid reveal">
+      <div class="skill-card">
+        <div class="skill-card-icon">📱</div>
+        <h3>Mobile Development</h3>
+        <p>Production-grade cross-platform apps with complex BLE, USB serial, and real-time data requirements.</p>
+        <div class="tag-list">
+          <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">iOS</span><span class="tag">Android</span><span class="tag">BLE</span><span class="tag">Fastlane</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🔌</div>
+        <h3>Embedded / Firmware</h3>
+        <p>Low-level firmware for Nordic nRF52840/5340, ESP32; ADC signal processing, timing-critical sensor fusion.</p>
+        <div class="tag-list">
+          <span class="tag">nRF52840</span><span class="tag">ESP32</span><span class="tag">BLE</span><span class="tag">Modbus</span><span class="tag">USB-C Serial</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">☁️</div>
+        <h3>Cloud & Backend</h3>
+        <p>AWS-centric architectures with serverless functions, auth flows, and real-time data pipelines.</p>
+        <div class="tag-list">
+          <span class="tag">AWS Amplify</span><span class="tag">Lambda</span><span class="tag">Cognito</span><span class="tag">Bedrock</span><span class="tag">Ruby on Rails</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🏥</div>
+        <h3>Healthcare IT</h3>
+        <p>HL7 v2 message processing (ADT, SIU), Firebird DB administration, patient management system integration.</p>
+        <div class="tag-list">
+          <span class="tag">HL7 v2</span><span class="tag">Firebird DB</span><span class="tag">ADT</span><span class="tag">SIU</span><span class="tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">⚡</div>
+        <h3>Energy & IoT</h3>
+        <p>Smart home automation, PV system integration, energy community management with real-time Modbus data.</p>
+        <div class="tag-list">
+          <span class="tag">Loxone</span><span class="tag">Modbus TCP</span><span class="tag">PV Systems</span><span class="tag">EEG/Billing API</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🤖</div>
+        <h3>AI & Analytics</h3>
+        <p>LLM integration, ML-based sensor data analysis, real-time performance analytics and nowcasting systems.</p>
+        <div class="tag-list">
+          <span class="tag">Claude API</span><span class="tag">AWS Bedrock</span><span class="tag">Mixpanel</span><span class="tag">Sentry</span><span class="tag">n8n</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-               				 <div class="iso-box html wordpress mobile col-lg-4 col-md-4 col-sm-6 col-xs-6">
-               				 	<a href="images/portfolio-img1.jpg" data-lightbox-gallery="portfolio-gallery"><img src="images/portfolio-img1.jpg" alt="portfolio img"></a>
-               				 </div>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">03 / Projects</div>
+    <h2>Selected<br><em>Work</em></h2>
+    <div class="projects-list">
 
-               				 <div class="iso-box wordpress col-md-4 col-lg-4 col-sm-6 col-xs-6">
-               				 	<a href="images/portfolio-img2.jpg" data-lightbox-gallery="portfolio-gallery"><img src="images/portfolio-img2.jpg" alt="portfolio img"></a>
-               				 </div>
+      <div class="project-item reveal">
+        <div class="project-num">001</div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="project-badge badge-founder">Co-Founder</span>
+          </div>
+          <h3>Kubikos</h3>
+          <div class="tag-list" style="margin-bottom: 12px;">
+            <span class="tag">Flutter</span><span class="tag">nRF52840</span><span class="tag">AWS</span><span class="tag">BLE</span><span class="tag">AI Analytics</span>
+          </div>
+          <p class="project-desc">
+            Patented sensor platform integrating directly into gym equipment to deliver real-time strength
+            training analytics powered by AI. Hardware+software stack covering custom firmware, Flutter mobile app,
+            and cloud-based performance intelligence. Exhibited at FIBO and the Iron Cage event (BILD.de stream).
+          </p>
+        </div>
+        <a href="https://kubikos.com" class="btn btn-ghost" target="_blank" style="align-self:start;">kubikos.com ↗</a>
+      </div>
 
-               				 <div class="iso-box html mobile col-lg-4 col-md-4 col-sm-6 col-xs-12">
-               				 	<a href="images/portfolio-img3.jpg" data-lightbox-gallery="portfolio-gallery"><img src="images/portfolio-img3.jpg" alt="portfolio img"></a>
-               				 </div>
+      <div class="project-item reveal">
+        <div class="project-num">002</div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="project-badge badge-freelance">Freelance</span>
+          </div>
+          <h3>VagusApp</h3>
+          <div class="tag-list" style="margin-bottom: 12px;">
+            <span class="tag">Flutter</span><span class="tag">HL7</span><span class="tag">Firebird</span><span class="tag">AWS Amplify</span><span class="tag">Mixpanel</span>
+          </div>
+          <p class="project-desc">
+            Patient-facing mobile app for rehabilitation clinics, integrating deeply with hospital information
+            systems via HL7 ADT/SIU messaging. Built and maintained full-stack: Flutter app, Firebird DB triggers,
+            AWS Amplify backend, analytics (Mixpanel/Sentry).
+          </p>
+        </div>
+        <span class="project-badge badge-freelance" style="align-self:start; height:fit-content;">GMS-Salzburg</span>
+      </div>
 
-               				 <div class="iso-box wordpress col-lg-4 col-md-4 col-sm-6 col-xs-6">
-               				 	<a href="images/portfolio-img4.jpg" data-lightbox-gallery="portfolio-gallery"><img src="images/portfolio-img4.jpg" alt="portfolio img"></a>
-               				 </div>
+      <div class="project-item reveal">
+        <div class="project-num">003</div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="project-badge badge-freelance">Freelance</span>
+          </div>
+          <h3>Felix — Hotel Management</h3>
+          <div class="tag-list" style="margin-bottom: 12px;">
+            <span class="tag">AWS Amplify</span><span class="tag">Firebird DB</span><span class="tag">HL7</span><span class="tag">Ruby on Rails</span>
+          </div>
+          <p class="project-desc">
+            Comprehensive hotel and hospitality management system built on AWS Amplify with Firebird database backend.
+            Handles guest management, check-in/check-out logic, parent-child clinic structures, and
+            complex appointment scheduling through HL7 message integration.
+          </p>
+        </div>
+        <span class="project-badge badge-freelance" style="align-self:start; height:fit-content;">GMS-Salzburg</span>
+      </div>
 
-               				 <div class="iso-box html photoshop col-lg-4 col-md-4 col-sm-6 col-xs-6">
-               				 	<a href="images/portfolio-img5.jpg" data-lightbox-gallery="portfolio-gallery"><img src="images/portfolio-img5.jpg" alt="portfolio img"></a>
-               				 </div>
+      <div class="project-item reveal">
+        <div class="project-num">004</div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="project-badge badge-freelance">Freelance</span>
+          </div>
+          <h3>WebTec — Energy Community</h3>
+          <div class="tag-list" style="margin-bottom: 12px;">
+            <span class="tag">Modbus TCP</span><span class="tag">PV Systems</span><span class="tag">EEG API</span><span class="tag">ML Nowcasting</span><span class="tag">REST API</span>
+          </div>
+          <p class="project-desc">
+            Energy community management software for Austrian Energiegemeinschaften (EEG).
+            Features real-time Modbus energy monitoring, ML-based PV generation nowcasting using
+            Open-Meteo weather data, and EEG billing API integration.
+          </p>
+        </div>
+        <span class="project-badge badge-freelance" style="align-self:start; height:fit-content;">GMS-Salzburg</span>
+      </div>
 
-               				 <div class="iso-box photoshop col-lg-4 col-md-4 col-sm-6 col-xs-12">
-               				 	<a href="images/portfolio-img6.jpg" data-lightbox-gallery="portfolio-gallery"><img src="images/portfolio-img6.jpg" alt="portfolio img"></a>
-               				 </div>
+    </div>
+  </section>
 
-               				 <div class="iso-box photoshop mobile col-lg-4 col-md-4 col-sm-12 col-xs-6">
-               				 	<a href="images/portfolio-img7.jpg" data-lightbox-gallery="portfolio-gallery"><img src="images/portfolio-img7.jpg" alt="portfolio img"></a>
-               				 </div>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">04 / Experience</div>
+    <h2>Career<br><em>History</em></h2>
+    <div class="exp-list">
 
-               				 <div class="iso-box photoshop mobile col-lg-4 col-md-4 col-sm-6 col-xs-6">
-               				 	<a href="images/portfolio-img8.jpg" data-lightbox-gallery="portfolio-gallery"><img src="images/portfolio-img8.jpg" alt="portfolio img"></a>
-               				 </div>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="company">Kubikos GmbH</div>
+          <div class="period">2022 — Present</div>
+        </div>
+        <div class="exp-body">
+          <h3>Co-Founder & CTO</h3>
+          <p>
+            Leading all technical development of a patented sensor-based strength training analytics platform.
+            Responsible for hardware architecture (nRF52840 firmware, custom ADC sensor fusion), Flutter mobile
+            application, AWS cloud infrastructure, and AI-driven performance analytics.
+            Internationally exhibited at FIBO and broadcast partnerships (BILD.de).
+          </p>
+          <div class="tag-list">
+            <span class="tag">Firmware</span><span class="tag">Flutter</span><span class="tag">AWS</span><span class="tag">Product Strategy</span><span class="tag">Fundraising</span>
+          </div>
+        </div>
+      </div>
 
-               				 <div class="iso-box wordpress mobile col-lg-4 col-md-4 col-sm-6 col-xs-12">
-               				 	<a href="images/portfolio-img9.jpg" data-lightbox-gallery="portfolio-gallery"><img src="images/portfolio-img9.jpg" alt="portfolio img"></a>
-               				 </div>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="company">Sport Performance Systems e.U.</div>
+          <div class="period">2018 — Present</div>
+        </div>
+        <div class="exp-body">
+          <h3>Owner & Freelance Software Engineer</h3>
+          <p>
+            Independent software engineering consultancy specialising in complex, cross-disciplinary systems.
+            Long-term client: GMS-Salzburg (healthcare IT, hotel management, energy).
+            Projects span embedded systems, mobile apps, cloud backends, and healthcare data integration.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Flutter</span><span class="tag">Ruby on Rails</span><span class="tag">AWS</span><span class="tag">HL7</span><span class="tag">Firebird</span><span class="tag">Embedded</span>
+          </div>
+        </div>
+      </div>
 
-               			</div>
-               		</div>
+    </div>
+  </section>
 
-				</div>
-			</div>
-		</div>
-	</div>
-</div>		
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">05 / Contact</div>
+    <h2>Let's Build<br><em>Something.</em></h2>
+    <p class="lead">
+      Open to freelance projects, technical consulting, and strategic partnerships.<br>
+      Based in Salzburg — available globally.
+    </p>
+    <div class="contact-grid reveal">
+      <a href="mailto:thomas@smaspos.com" class="contact-card">
+        <span class="ci">✉</span>
+        <div class="ct">
+          <small>Email</small>
+          <span>thomas@smaspos.com</span>
+        </div>
+      </a>
+      <a href="https://github.com/YOUR_GITHUB" target="_blank" class="contact-card">
+        <span class="ci">⌥</span>
+        <div class="ct">
+          <small>GitHub</small>
+          <span>github.com/YOUR_GITHUB</span>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" class="contact-card">
+        <span class="ci">in</span>
+        <div class="ct">
+          <small>LinkedIn</small>
+          <span>Connect with me</span>
+        </div>
+      </a>
+      <a href="https://kubikos.com" target="_blank" class="contact-card">
+        <span class="ci">◈</span>
+        <div class="ct">
+          <small>Venture</small>
+          <span>kubikos.com</span>
+        </div>
+      </a>
+    </div>
+  </section>
 
-<!-- team section -->
-<section id="team">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<h1 class="heading bold">OUR TEAM</h1>
-				<h2 class="subheading">CREATIVE TALENTS FROM WEST COAST</h2>
-			</div>
-			<div class="col-md-4 col-sm-4 col-xs-6 wow fadeIn" data-wow-delay="0.9s">
-				<div class="team-wrapper">
-					<img src="images/team1.jpg" class="img-responsive" alt="team img">
-						<div class="team-des">
-							<h4>Tracy</h4>
-							<h3>Designer</h3>
-						</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-4 col-xs-6 wow fadeIn" data-wow-delay="1.3s">
-				<div class="team-wrapper">
-					<img src="images/team2.jpg" class="img-responsive" alt="team img">
-						<div class="team-des">
-							<h4>Linda</h4>
-							<h3>Manager</h3>
-						</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-4 col-xs-6 wow fadeIn" data-wow-delay="1.6s">
-				<div class="team-wrapper">
-					<img src="images/team3.jpg" class="img-responsive" alt="team img">
-						<div class="team-des">
-							<h4>Mary</h4>
-							<h3>Developer</h3>
-						</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+  <!-- FOOTER -->
+  <footer>
+    <span>Thomas Huttegger</span> — Sport Performance Systems e.U. — Salzburg, Austria —
+    Built with precision. Designed to impress.
+  </footer>
 
-<!-- contact section -->
-<section id="contact">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 text-center">
-				<h1 class="heading bold">CONTACT US</h1>
-				<h2 class="subheading">WE LOVE PRETTY MUCH TO HEAR FROM YOU</h2>
-			</div>
-		</div>
-		<div class="row">
-			<div class="contact-info-box col-md-4 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="0.6s">
-				<i class="fa fa-phone"></i>
-					<h3>060-040-0640</h3>
-			</div>
-			<div class="contact-info-box col-md-4 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="0.8s">
-				<i class="fa fa-envelope-o"></i>
-					<h3>info@company.com</h3>
-			</div>
-			<div class="contact-info-box col-md-4 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="1s">
-				<i class="fa fa-map-marker"></i>
-					<h3>San Francisco, California</h3>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<form action="#" method="post">
-					<div class="col-md-6 col-sm-6">
-						<input name="name" type="text" class="form-control" id="name" placeholder="Name">
-				  	  	<input name="email" type="email" class="form-control" id="email" placeholder="Email">
-						<input name="subject" type="text" class="form-control" id="subject" placeholder="Subject">
-					</div>
-					<div class="col-md-6 col-sm-6">
-						<textarea name="message" rows="7" class="form-control" id="message" placeholder="Message"></textarea>
-					</div>
-					<div class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-6">
-						<input name="submit" type="submit" class="form-control" id="submit" value="SEND EMAIL">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</section>
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
 
-<!-- footer section -->
-<footer>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<ul class="social-icon">
-					<li><a href="http://www.facebook.com/templatemo" 
-                    				class="fa fa-facebook wow bounceIn" data-wow-delay="0.3s" target="_parent"></a></li>
-					<li><a href="#" class="fa fa-twitter wow bounceIn" data-wow-delay="0.6s"></a></li>
-					<li><a href="#" class="fa fa-behance wow bounceIn" data-wow-delay="0.9s"></a></li>
-					<li><a href="#" class="fa fa-dribbble wow bounceIn" data-wow-delay="0.9s"></a></li>
-					<li><a href="#" class="fa fa-github wow bounceIn" data-wow-delay="0.9s"></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</footer>
+    // Stagger skill cards on load
+    document.querySelectorAll('.skill-card').forEach((card, i) => {
+      card.style.animationDelay = `${i * 60}ms`;
+    });
 
-<!-- copyright section -->
-<section id="copyright">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8 col-sm-8 col-xs-9">
-				<p>Copyright © 2084 Blaster Studio | Design: <a rel="nofollow" href="http://www.templatemo.com" target="_parent">templatemo</a></p>
-			</div>
-			<div class="col-md-4 col-sm-4 col-xs-3">
-				<a href="#home" class="smoothScroll fa fa-angle-up"></a>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- JAVASCRIPT JS FILES -->	
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/smoothscroll.js"></script>
-<script src="js/isotope.js"></script>
-<script src="js/imagesloaded.min.js"></script>
-<script src="js/nivo-lightbox.min.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/custom.js"></script>
-
+    // CV download placeholder
+    document.getElementById('cv-download').addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Replace this with a link to your CV PDF in the repository!');
+    });
+  </script>
 </body>
 </html>
