@@ -20,6 +20,33 @@
       --mono:      'JetBrains Mono', monospace;
       --serif:     'DM Serif Display', serif;
       --sans:      'Instrument Sans', sans-serif;
+      --grid-color: rgba(0,229,160,.025);
+      --badge-founder-bg: rgba(0,229,160,.12);
+      --badge-founder-border: rgba(0,229,160,.25);
+      --badge-freelance-bg: rgba(0,87,255,.12);
+      --badge-freelance-color: #5b9bff;
+      --badge-freelance-border: rgba(0,87,255,.25);
+      --nav-bg: rgba(10,10,11,.85);
+      --desc-color: var(--desc-color);
+    }
+
+    /* ── ANTHROPIC THEME ── */
+    [data-theme="anthropic"] {
+      --bg:        #faf6f1;
+      --surface:   #fff;
+      --border:    #e5ddd4;
+      --accent:    #c55a38;
+      --accent2:   #8b5e3c;
+      --text:      #1a1a1a;
+      --muted:     #7a7068;
+      --grid-color: rgba(197,90,56,.03);
+      --badge-founder-bg: rgba(197,90,56,.1);
+      --badge-founder-border: rgba(197,90,56,.25);
+      --badge-freelance-bg: rgba(90,120,180,.1);
+      --badge-freelance-color: #4a6fa5;
+      --badge-freelance-border: rgba(90,120,180,.25);
+      --nav-bg: rgba(250,246,241,.92);
+      --desc-color: #5a5550;
     }
 
     html { scroll-behavior: smooth; }
@@ -39,8 +66,8 @@
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(0,229,160,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,229,160,.025) 1px, transparent 1px);
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
       background-size: 48px 48px;
       pointer-events: none;
       z-index: 0;
@@ -55,7 +82,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 18px 48px;
-      background: rgba(10,10,11,.85);
+      background: var(--nav-bg);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -126,7 +153,7 @@
     }
     .hero-desc {
       font-size: 17px;
-      color: #a8a8b4;
+      color: var(--desc-color);
       max-width: 580px;
       margin-bottom: 48px;
       font-weight: 300;
@@ -190,7 +217,7 @@
       align-items: start;
     }
     .about-text p {
-      color: #a8a8b4;
+      color: var(--desc-color);
       font-weight: 300;
       font-size: 16px;
       margin-bottom: 20px;
@@ -301,7 +328,7 @@
     .project-tags { margin-bottom: 12px; }
     .project-desc {
       font-size: 14px;
-      color: #a8a8b4;
+      color: var(--desc-color);
       font-weight: 300;
       max-width: 560px;
     }
@@ -314,8 +341,8 @@
       border-radius: 2px;
       white-space: nowrap;
     }
-    .badge-founder { background: rgba(0,229,160,.12); color: var(--accent); border: 1px solid rgba(0,229,160,.25); }
-    .badge-freelance { background: rgba(0,87,255,.12); color: #5b9bff; border: 1px solid rgba(0,87,255,.25); }
+    .badge-founder { background: var(--badge-founder-bg); color: var(--accent); border: 1px solid var(--badge-founder-border); }
+    .badge-freelance { background: var(--badge-freelance-bg); color: var(--badge-freelance-color); border: 1px solid var(--badge-freelance-border); }
     .badge-oss { background: rgba(120,120,140,.1); color: var(--muted); border: 1px solid var(--border); }
 
     /* ── EXPERIENCE ── */
@@ -344,7 +371,7 @@
     }
     .exp-body p {
       font-size: 14px;
-      color: #a8a8b4;
+      color: var(--desc-color);
       font-weight: 300;
       margin-bottom: 14px;
     }
@@ -405,6 +432,38 @@
     }
     footer span { color: var(--accent); }
 
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all .3s;
+      white-space: nowrap;
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .theme-toggle .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      transition: background .3s;
+    }
+
+    /* ── SMOOTH THEME TRANSITION ── */
+    body, nav, .skill-card, .contact-card, .about-facts, .fact-row,
+    .btn-ghost, .btn-primary, .tag, .project-badge, footer {
+      transition: background .4s, color .4s, border-color .4s;
+    }
+
     /* ── SCROLL ANIMATIONS ── */
     .reveal {
       opacity: 0;
@@ -436,6 +495,10 @@
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="theme-toggle">
+        <span class="dot"></span>
+        <span id="theme-label">Anthropic</span>
+      </button>
     </div>
   </nav>
 
@@ -874,6 +937,27 @@
     // Stagger skill cards on load
     document.querySelectorAll('.skill-card').forEach((card, i) => {
       card.style.animationDelay = `${i * 60}ms`;
+    });
+
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    const label = document.getElementById('theme-label');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'anthropic') {
+      document.documentElement.setAttribute('data-theme', 'anthropic');
+      label.textContent = 'Dark';
+    }
+    toggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      if (current === 'anthropic') {
+        document.documentElement.removeAttribute('data-theme');
+        label.textContent = 'Anthropic';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'anthropic');
+        label.textContent = 'Dark';
+        localStorage.setItem('theme', 'anthropic');
+      }
     });
 
     // CV download placeholder
