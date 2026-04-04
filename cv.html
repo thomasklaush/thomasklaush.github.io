@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thomas Klaushofer — CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --text: #1a1a1a;
+      --muted: #555;
+      --accent: #c55a38;
+      --border: #ddd;
+      --bg: #fff;
+      --serif: 'DM Serif Display', serif;
+      --sans: 'Instrument Sans', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+    html { font-size: 14px; }
+    body {
+      font-family: var(--sans);
+      color: var(--text);
+      background: #f5f5f5;
+      line-height: 1.6;
+    }
+    .page {
+      max-width: 800px;
+      margin: 24px auto;
+      background: var(--bg);
+      padding: 48px 56px;
+      box-shadow: 0 1px 8px rgba(0,0,0,.1);
+    }
+    @media print {
+      body { background: #fff; }
+      .page { box-shadow: none; margin: 0; padding: 32px 40px; max-width: 100%; }
+      .no-print { display: none !important; }
+      @page { margin: 12mm; }
+    }
+
+    /* Header */
+    .cv-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; border-bottom: 2px solid var(--accent); padding-bottom: 20px; }
+    .cv-name { font-family: var(--serif); font-size: 2.2rem; line-height: 1.1; }
+    .cv-name em { color: var(--accent); font-style: italic; }
+    .cv-title { font-size: .95rem; color: var(--muted); margin-top: 4px; }
+    .cv-contact { text-align: right; font-size: .8rem; color: var(--muted); line-height: 1.8; }
+    .cv-contact a { color: var(--accent); text-decoration: none; }
+
+    /* Sections */
+    .cv-section { margin-top: 22px; }
+    .cv-section-title {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+    }
+
+    /* Experience entries */
+    .cv-entry { display: grid; grid-template-columns: 140px 1fr; gap: 16px; margin-bottom: 14px; }
+    .cv-period { font-family: var(--mono); font-size: .75rem; color: var(--muted); padding-top: 2px; }
+    .cv-role { font-weight: 600; font-size: .95rem; }
+    .cv-company { color: var(--accent); font-size: .85rem; }
+    .cv-desc { font-size: .85rem; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+    .cv-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+    .cv-tag {
+      font-family: var(--mono);
+      font-size: .65rem;
+      padding: 1px 6px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
+    }
+
+    /* Education */
+    .cv-edu { display: grid; grid-template-columns: 140px 1fr; gap: 16px; margin-bottom: 8px; }
+    .cv-edu-degree { font-weight: 600; font-size: .85rem; }
+    .cv-edu-inst { font-size: .8rem; color: var(--muted); }
+    .cv-edu-detail { font-size: .8rem; color: var(--muted); font-style: italic; }
+
+    /* Skills grid */
+    .cv-skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
+    .cv-skill-cat { font-weight: 600; font-size: .8rem; margin-bottom: 2px; }
+    .cv-skill-items { font-size: .8rem; color: var(--muted); margin-bottom: 8px; }
+
+    /* Two column bottom */
+    .cv-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .cv-list { font-size: .8rem; color: var(--muted); }
+    .cv-list li { margin-bottom: 3px; }
+
+    /* Print button */
+    .print-btn {
+      position: fixed; top: 16px; right: 16px;
+      padding: 10px 20px;
+      font-family: var(--mono); font-size: .75rem;
+      letter-spacing: .08em; text-transform: uppercase;
+      background: var(--accent); color: #fff; border: none;
+      border-radius: 3px; cursor: pointer;
+    }
+    .print-btn:hover { background: #a84a2d; }
+  </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">Print / Save PDF</button>
+
+<div class="page">
+
+  <div class="cv-header">
+    <div>
+      <div class="cv-name">Thomas <em>Klaushofer</em></div>
+      <div class="cv-title">DI, MLBT BSc — Software Engineer & Technical Founder</div>
+    </div>
+    <div class="cv-contact">
+      Faistenau / Salzburg, Austria<br>
+      <a href="mailto:Thomas.klaushofer@smaspos.com">Thomas.klaushofer@smaspos.com</a><br>
+      +43 678 1217902<br>
+      <a href="https://thomasklaush.github.io">thomasklaush.github.io</a><br>
+      <a href="https://github.com/thomasklaush">github.com/thomasklaush</a><br>
+      <a href="https://www.linkedin.com/in/thomas-klaushofer-39386793/">LinkedIn</a> &middot;
+      <a href="https://kubikos.net">kubikos.net</a>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="cv-section">
+    <div class="cv-section-title">Experience</div>
+
+    <div class="cv-entry">
+      <div class="cv-period">2021 — Present</div>
+      <div>
+        <div class="cv-role">Founder & CEO</div>
+        <div class="cv-company">Kubikos GmbH</div>
+        <div class="cv-desc">
+          German patent holder (DE 112021007607.8). Built end-to-end IoT fitness sensor platform:
+          custom hardware sensors (PCB design, reflow soldering), nRF52840 C++ firmware with patented
+          sensor fusion (99% accuracy, validated with Paris Lodron University Salzburg), Flutter mobile
+          app (v177+), TypeScript backend, FIT CLOUD B2B platform. Partnered with Hammer Sport AG;
+          piloting with FITINN; prototyping with Gym80. FFG grant recipient (In Situ Energy Harvesting).
+          Also developed EG Energiemanager app for WebTec (renewable energy communities).
+          Exhibited at FIBO 2024/25/26 and ISPO Munich 2022. Startup Salzburg FACTORY alumnus,
+          Investors Lounge winner, Startup World Cup 2025 participant.
+        </div>
+        <div class="cv-tags">
+          <span class="cv-tag">Patent Holder</span><span class="cv-tag">Flutter</span><span class="cv-tag">nRF52840</span>
+          <span class="cv-tag">C++</span><span class="cv-tag">TypeScript</span><span class="cv-tag">AWS</span>
+          <span class="cv-tag">BLE</span><span class="cv-tag">Kalman Filter</span><span class="cv-tag">FFG Funded</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-period">2018 — Present</div>
+      <div>
+        <div class="cv-role">Owner & Freelance Software Engineer</div>
+        <div class="cv-company">Sport Performance Systems e.U. (for GMS-Salzburg)</div>
+        <div class="cv-desc">
+          Customer success and engineering for Vagus (patient-facing app for rehabilitation clinics,
+          HL7 ADT/SIU interfaces, RAG-based FAQ chatbot, deployed across dozens of DACH facilities).
+          Partial team lead on Unity — a unified platform integrating hotel management, medical clinic,
+          and patient applications with LLM routing architecture (Gateway Lambda, AWS Bedrock,
+          multi-provider evaluation). Built custom MCP servers and drove AI automation tooling adoption.
+        </div>
+        <div class="cv-tags">
+          <span class="cv-tag">LLM Routing</span><span class="cv-tag">MCP Servers</span><span class="cv-tag">HL7</span>
+          <span class="cv-tag">AWS Bedrock</span><span class="cv-tag">RAG</span><span class="cv-tag">Ruby on Rails</span>
+          <span class="cv-tag">n8n</span><span class="cv-tag">AI Tooling</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-period">2017 — 2021</div>
+      <div>
+        <div class="cv-role">Head of Competence Center AET</div>
+        <div class="cv-company">BEKO Engineering & Informatik GmbH</div>
+        <div class="cv-desc">
+          Led three departments (Electrical Engineering, Automation, Measurement Systems / HW Development).
+          Full disciplinary and technical leadership, budget responsibility.
+          Licensed managing director for electrical engineering and mechatronics.
+        </div>
+        <div class="cv-tags">
+          <span class="cv-tag">Leadership</span><span class="cv-tag">Automation</span>
+          <span class="cv-tag">Budget Management</span><span class="cv-tag">Electrical Engineering</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-period">2017 (Mar—May)</div>
+      <div>
+        <div class="cv-role">Head of Electrical & Control Engineering</div>
+        <div class="cv-company">Kormaran</div>
+        <div class="cv-desc">
+          Control and regulation systems for an innovative watercraft. Test rig construction,
+          full vehicle architecture commissioning. Led team of three engineers.
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-period">2007 — 2017</div>
+      <div>
+        <div class="cv-role">CAD Designer &rarr; Project Developer &rarr; Product Manager</div>
+        <div class="cv-company">Siconnex Customized Solutions</div>
+        <div class="cv-desc">
+          A decade in semiconductor equipment manufacturing. Progressed from CAD designer and service
+          technician to project developer with global technical sales responsibility, then product manager.
+          International presentations at semiconductor trade shows and symposia.
+        </div>
+        <div class="cv-tags">
+          <span class="cv-tag">Semiconductor</span><span class="cv-tag">Product Management</span>
+          <span class="cv-tag">Global Sales</span><span class="cv-tag">CAD</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-period">2013 — Present</div>
+      <div>
+        <div class="cv-role">Technical Trainer</div>
+        <div class="cv-company">WIFI Salzburg</div>
+        <div class="cv-desc">Part-time instructor for electrical drives and physics.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="cv-section">
+    <div class="cv-section-title">Education</div>
+
+    <div class="cv-edu">
+      <div class="cv-period">2013 — 2017</div>
+      <div>
+        <div class="cv-edu-degree">Master of Legal and Business Aspects in Technology (MLBT)</div>
+        <div class="cv-edu-inst">Johannes Kepler University Linz</div>
+      </div>
+    </div>
+
+    <div class="cv-edu">
+      <div class="cv-period">2011 — 2013</div>
+      <div>
+        <div class="cv-edu-degree">MSc Mechatronics — Specialisation Robotics</div>
+        <div class="cv-edu-inst">Johannes Kepler University Linz — <em>graduated with distinction</em></div>
+        <div class="cv-edu-detail">Thesis: Force-based robot control with haptic input device (6-axis industrial robot)</div>
+      </div>
+    </div>
+
+    <div class="cv-edu">
+      <div class="cv-period">2011 — 2012</div>
+      <div>
+        <div class="cv-edu-degree">Mathematical Modeling in Applied Mechanics (2 semesters abroad)</div>
+        <div class="cv-edu-inst">Saint Petersburg State Polytechnical University</div>
+        <div class="cv-edu-detail">JKU Study Abroad Excellence Award</div>
+      </div>
+    </div>
+
+    <div class="cv-edu">
+      <div class="cv-period">2007 — 2010</div>
+      <div>
+        <div class="cv-edu-degree">BSc Mechatronics — Specialisation Automation</div>
+        <div class="cv-edu-inst">Johannes Kepler University Linz</div>
+        <div class="cv-edu-detail">Thesis: Vehicle simulation on engine test bench (drivetrain physics)</div>
+      </div>
+    </div>
+
+    <div class="cv-edu">
+      <div class="cv-period">2001 — 2006</div>
+      <div>
+        <div class="cv-edu-degree">HTL — Electrical Engineering</div>
+        <div class="cv-edu-inst">HTBLA Salzburg</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="cv-section">
+    <div class="cv-section-title">Technical Skills</div>
+    <div class="cv-skills-grid">
+      <div>
+        <div class="cv-skill-cat">Mobile</div>
+        <div class="cv-skill-items">Flutter, Dart, iOS, Android, BLE, Fastlane CI/CD</div>
+      </div>
+      <div>
+        <div class="cv-skill-cat">Embedded / Firmware</div>
+        <div class="cv-skill-items">nRF52840/5340, ESP32, C/C++, BLE, Modbus TCP, Kalman Filter</div>
+      </div>
+      <div>
+        <div class="cv-skill-cat">Cloud & Backend</div>
+        <div class="cv-skill-items">AWS (Amplify, Lambda, Cognito, Bedrock), TypeScript, Ruby on Rails, GCP, Firebase</div>
+      </div>
+      <div>
+        <div class="cv-skill-cat">AI & LLM</div>
+        <div class="cv-skill-items">Claude API, MCP Servers, AWS Bedrock, Gemini, RAG, n8n, LLM Gateway Routing</div>
+      </div>
+      <div>
+        <div class="cv-skill-cat">Healthcare IT</div>
+        <div class="cv-skill-items">HL7 v2 (ADT, SIU), Firebird DB, Delphi, SQL</div>
+      </div>
+      <div>
+        <div class="cv-skill-cat">Energy & IoT</div>
+        <div class="cv-skill-items">Loxone, Modbus TCP, PV Systems, EEG/Billing API</div>
+      </div>
+      <div>
+        <div class="cv-skill-cat">Industrial Automation</div>
+        <div class="cv-skill-items">Simatic S7 TIA Portal, B&R Automation Studio 4, Beckhoff TwinCAT 2 & 3</div>
+      </div>
+      <div>
+        <div class="cv-skill-cat">Languages</div>
+        <div class="cv-skill-items">TypeScript, Python, Dart, C/C++, Java, JavaScript, Assembler</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM ROW -->
+  <div class="cv-section">
+    <div class="cv-two-col">
+      <div>
+        <div class="cv-section-title">Certifications & Awards</div>
+        <ul class="cv-list">
+          <li>German Patent DE 112021007607.8 — Training Device</li>
+          <li>IPMA Level D Project Manager (2018)</li>
+          <li>Strategic & Technical Product Manager (2016)</li>
+          <li>JKU Study Abroad Excellence Award (2012)</li>
+          <li>Startup Salzburg Investors Lounge Winner (2022)</li>
+          <li>FFG Grant — In Situ Energy Harvesting (2025)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="cv-section-title">Languages</div>
+        <ul class="cv-list">
+          <li>German — Native</li>
+          <li>English — C2</li>
+          <li>Russian — B2</li>
+          <li>Spanish — A1</li>
+        </ul>
+        <div class="cv-section-title" style="margin-top: 14px;">Trade Shows & Events</div>
+        <ul class="cv-list">
+          <li>FIBO 2024/25/26 (Cologne)</li>
+          <li>ISPO Munich 2022</li>
+          <li>Reha-Kolloquium 2026 (Leipzig)</li>
+          <li>Startup World Cup 2025</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
