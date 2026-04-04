@@ -924,9 +924,11 @@
     const toggle = document.getElementById('theme-toggle');
     const label = document.getElementById('theme-label');
     const saved = localStorage.getItem('theme');
-    if (saved === 'anthropic') {
+    const urlTheme = new URLSearchParams(window.location.search).get('theme');
+    if (urlTheme === 'anthropic' || saved === 'anthropic') {
       document.documentElement.setAttribute('data-theme', 'anthropic');
       label.textContent = 'Dark';
+      if (urlTheme) localStorage.setItem('theme', 'anthropic');
     }
     toggle.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme');
