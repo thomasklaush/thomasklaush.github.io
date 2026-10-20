@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thomas Klaushofer — Software Engineer & Technical Founder</title>
+  <title>Thomas Klaushofer — AI Engineer, Speaker & Technical Founder</title>
+  <meta name="description" content="Thomas Klaushofer builds AI agents, MCP servers and personal AI assistants in production — and teaches it: talks, workshops and courses on AI at work, AI agents and AI-assisted development.">
+  <meta property="og:title" content="Thomas Klaushofer — AI Engineer, Speaker &amp; Technical Founder">
+  <meta property="og:description" content="AI agents, MCP servers and personal AI assistants in production — plus talks, workshops and courses on AI.">
+  <meta property="og:image" content="https://thomasklaush.github.io/assets/thomas.jpg">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -27,7 +32,7 @@
       --badge-freelance-color: #5b9bff;
       --badge-freelance-border: rgba(0,87,255,.25);
       --nav-bg: rgba(10,10,11,.85);
-      --desc-color: var(--desc-color);
+      --desc-color: #b8b8c2;
     }
 
     /* ── ANTHROPIC THEME ── */
@@ -117,6 +122,16 @@
       margin: 0 auto;
     }
     .hero-inner { max-width: 780px; }
+    #hero { gap: 64px; justify-content: space-between; }
+    .hero-photo {
+      flex: 0 0 300px;
+      aspect-ratio: 2 / 3;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--border);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .hero-tag {
       display: inline-flex;
       align-items: center;
@@ -376,6 +391,81 @@
       margin-bottom: 14px;
     }
 
+    /* ── SPEAKING ── */
+    .talk-intro {
+      font-size: 16px;
+      color: var(--desc-color);
+      font-weight: 300;
+      max-width: 720px;
+      margin-bottom: 40px;
+    }
+    .talk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .talk-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 24px;
+    }
+    .talk-card .talk-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .talk-card h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .talk-card p {
+      font-size: 13px;
+      color: var(--desc-color);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .talk-card .talk-source {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    .talk-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    .talk-meta h4 {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .talk-meta ul { list-style: none; }
+    .talk-meta li {
+      font-size: 14px;
+      color: var(--desc-color);
+      font-weight: 300;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .talk-cta {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .talk-cta a { color: var(--accent); text-decoration: none; }
+    .talk-cta a:hover { text-decoration: underline; }
+
     /* ── CONTACT ── */
     #contact { text-align: center; }
     #contact h2 { margin-bottom: 20px; }
@@ -459,7 +549,7 @@
     }
 
     /* ── SMOOTH THEME TRANSITION ── */
-    body, nav, .skill-card, .contact-card, .about-facts, .fact-row,
+    body, nav, .skill-card, .talk-card, .contact-card, .about-facts, .fact-row,
     .btn-ghost, .btn-primary, .tag, .project-badge, footer {
       transition: background .4s, color .4s, border-color .4s;
     }
@@ -481,6 +571,10 @@
       .project-item { grid-template-columns: 1fr; gap: 12px; }
       .project-num { display: none; }
       .exp-item { grid-template-columns: 1fr; gap: 8px; }
+      .hero-ctas .btn { padding: 12px 20px; }
+      #hero { flex-direction: column-reverse; align-items: flex-start; gap: 32px; }
+      .hero-photo { flex: none; width: 140px; aspect-ratio: 1; border-radius: 50%; }
+      .hero-photo img { object-position: 50% 0; transform: scale(1.35); transform-origin: 50% 38%; }
     }
   </style>
 </head>
@@ -491,6 +585,7 @@
     <span class="nav-logo">TK // Portfolio</span>
     <div class="nav-links">
       <a href="#about">About</a>
+      <a href="#speaking">Talks</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
@@ -505,22 +600,26 @@
   <!-- HERO -->
   <div id="hero">
     <div class="hero-inner">
-      <div class="hero-tag">Software Engineer · Technical Founder · Salzburg, Austria</div>
+      <div class="hero-tag">AI Engineer · Speaker &amp; Trainer · Technical Founder · Salzburg, Austria</div>
       <h1>Thomas<br><em>Klaushofer</em></h1>
-      <p class="hero-subtitle">// Mechatronics · Mobile · Cloud · Health & Sports Tech · IoT · Energy</p>
+      <p class="hero-subtitle">// AI Agents · MCP · Claude Code · Mobile · Cloud · IoT · Energy</p>
       <p class="hero-desc">
-        I build at the intersection of hardware and software — from patented sensor technology
-        and nRF firmware to Flutter apps, AWS cloud architectures, and AI-driven analytics.
-        Founder of Kubikos (German patent holder). MSc Mechatronics (Robotics, with distinction).
-        Exhibited at FIBO &amp; ISPO. Building complex systems across fitness, health tech,
-        hospitality, and renewable energy.
+        I build AI that does real work — personal AI assistants, AI agents with human approval,
+        and MCP servers that connect Claude to existing systems — and I teach how to do it
+        safely: talks, workshops and courses on AI at work, AI agents, and AI-assisted development.
+        Founder of Kubikos (German patent holder), MSc Mechatronics (Robotics, with distinction),
+        technical trainer since 2013. Shipping across fitness, health tech, hospitality, and renewable energy.
       </p>
       <div class="hero-ctas">
         <a href="#contact" class="btn btn-primary">Get in Touch ↓</a>
+        <a href="#speaking" class="btn btn-ghost">Talks &amp; Workshops</a>
         <a href="#projects" class="btn btn-ghost">View Projects</a>
         <a href="cv.html" class="btn btn-ghost" target="_blank">View CV ↗</a>
         <a href="https://www.npmjs.com/package/thomas-klaushofer-mcp" class="btn btn-ghost" target="_blank">MCP Server ↗</a>
       </div>
+    </div>
+    <div class="hero-photo">
+      <img src="assets/thomas.jpg" alt="Portrait of Thomas Klaushofer" width="720" height="1080">
     </div>
   </div>
 
@@ -589,11 +688,144 @@
     </div>
   </section>
 
+  <!-- SPEAKING -->
+  <section id="speaking">
+    <div class="section-label">02 / Talks &amp; Workshops</div>
+    <h2>Talks &amp; Courses<br><em>on AI</em></h2>
+    <p class="talk-intro reveal">
+      Every topic comes from systems I build and run myself — not from slides about other people's
+      demos. I show what works, what breaks, and where humans stay in control. Available in German
+      and English, for teams that want to use AI productively without giving up on security and
+      data protection.
+    </p>
+    <div class="talk-grid reveal">
+      <div class="talk-card">
+        <div class="talk-num">01</div>
+        <h3>Building a personal AI assistant</h3>
+        <p>
+          Mail, chats, calendar and tickets in one place, triaged by Claude running headless.
+          Replies are prepared as drafts only — nothing goes out without me. Feature wishes from chats
+          pass a review stage with follow-up questions before they become tickets; receipts are
+          matched to the right company and month for bookkeeping.
+        </p>
+        <div class="talk-source">From practice: Inbox Hub, my own daily assistant</div>
+      </div>
+      <div class="talk-card">
+        <div class="talk-num">02</div>
+        <h3>Safe AI agents: approvals &amp; least privilege</h3>
+        <p>
+          Treat every message as untrusted input. AI steps that read foreign content get minimal
+          rights, outputs are validated before use, tokens are split by purpose, and every write
+          action waits for human approval. Concrete patterns, failure modes, and how to audit them.
+        </p>
+        <div class="talk-source">From practice: Inbox Hub · agents for hotel software · security audit</div>
+      </div>
+      <div class="talk-card">
+        <div class="talk-num">03</div>
+        <h3>MCP servers for existing systems</h3>
+        <p>
+          Connect Claude to the systems you already have — REST backends, ticketing, time tracking,
+          product catalogues — via the Model Context Protocol. OAuth for remote servers, passing the
+          calling user's permissions through, per-tool rights, and what not to expose.
+        </p>
+        <div class="talk-source">From practice: Kubikos remote MCP · hotel-backend MCP · ticket MCP · Redmine MCP</div>
+      </div>
+      <div class="talk-card">
+        <div class="talk-num">04</div>
+        <h3>AI-assisted development with Claude Code in teams</h3>
+        <p>
+          From prompting to a workflow: CLAUDE.md per repo, skills, guard hooks, role-based
+          subagents across multiple repositories, and pull requests as the human review point.
+          Plus docs-as-code: an AI pipeline that keeps a user manual current, with every change approved by a person.
+        </p>
+        <div class="talk-source">From practice: multi-repo energy platform · AI handbook pipeline · Kubikos</div>
+      </div>
+      <div class="talk-card">
+        <div class="talk-num">05</div>
+        <h3>AI in SMEs &amp; data protection</h3>
+        <p>
+          Where AI pays off in small and mid-sized companies, and how to keep personal data safe:
+          pseudonymise before classification, transcribe locally, mask secrets, keep suggestions
+          as suggestions. A pragmatic engineering view, informed by a master's in legal &amp; business
+          aspects of technology.
+        </p>
+        <div class="talk-source">From practice: AI ticket triage · healthcare &amp; energy projects</div>
+      </div>
+      <div class="talk-card">
+        <div class="talk-num">06</div>
+        <h3>AI in everyday work</h3>
+        <p>
+          A hands-on start for non-developers: what today's assistants can reliably do, how to brief
+          them, how to check their output, and which tasks to hand over first — with examples from
+          mail, planning, documentation and bookkeeping.
+        </p>
+        <div class="talk-source">From practice: my own daily routine with an AI assistant</div>
+      </div>
+    </div>
+    <div class="talk-meta reveal">
+      <div>
+        <h4>Formats</h4>
+        <ul>
+          <li>Talk or keynote</li>
+          <li>Hands-on workshop</li>
+          <li>Multi-part course or in-house training</li>
+          <li>On-site or remote, any length</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Audiences</h4>
+        <ul>
+          <li>Executives &amp; SMEs deciding where AI fits</li>
+          <li>Development teams adopting AI agents and Claude Code</li>
+          <li>Knowledge workers starting with AI at work</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Teaching background</h4>
+        <ul>
+          <li>Technical trainer at WIFI Salzburg since 2013</li>
+          <li>Drives AI tooling adoption in engineering teams</li>
+          <li>Has presented Kubikos, an AI-enhanced training app with a high-precision sensor, on several occasions</li>
+          <li>Talks in German &amp; English</li>
+        </ul>
+      </div>
+    </div>
+    <p class="talk-cta reveal">
+      Planning an event, a workshop or in-house training?
+      <a href="mailto:Thomas.klaushofer@smaspos.com?subject=AI%20talk%20%2F%20workshop">Get in touch →</a>
+    </p>
+  </section>
+
   <!-- SKILLS -->
   <section id="skills">
-    <div class="section-label">02 / Skills</div>
+    <div class="section-label">03 / Skills</div>
     <h2>Technical<br><em>Expertise</em></h2>
     <div class="skills-grid reveal">
+      <div class="skill-card">
+        <div class="skill-card-icon">🤖</div>
+        <h3>AI & Generative AI</h3>
+        <p>
+          AI agents with human approval gates, least-privilege tools and cost limits.
+          Personal AI assistant with headless Claude triage and drafts-only output.
+          Production MCP servers — remote, OAuth-secured servers in the Kubikos platform, an MCP layer
+          over an existing hotel backend that passes the caller's permissions through, a ticketing MCP,
+          and one <a href="https://www.npmjs.com/package/thomas-klaushofer-mcp" target="_blank" style="color:var(--accent);">published on npm</a>.
+          AI ticket triage (local embeddings, Claude on pseudonymised text). AWS Bedrock training-plan engine,
+          Gemini/Veo3 content pipeline, LLM gateway routing, RAG. Claude Code workflows with skills, hooks
+          and role-based subagents across multiple repos.
+        </p>
+        <div class="tag-list">
+          <span class="tag">Claude Code</span><span class="tag">Claude API</span><span class="tag">AI Agents</span><span class="tag">MCP Servers</span><span class="tag">Remote MCP / OAuth</span><span class="tag">Human-in-the-loop</span><span class="tag">AWS Bedrock</span><span class="tag">Embeddings</span><span class="tag">Gemini</span><span class="tag">Veo3</span><span class="tag">RAG</span><span class="tag">n8n</span><span class="tag">LLM Routing</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🛡️</div>
+        <h3>Security &amp; DevOps</h3>
+        <p>Security and architecture audit of a multi-tenant platform with tracked fixes, auth hardening, secrets hygiene, CI/CD and container deployments.</p>
+        <div class="tag-list">
+          <span class="tag">Security Audit</span><span class="tag">GitHub Actions</span><span class="tag">Forgejo</span><span class="tag">Jenkins</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">AWS CDK</span>
+        </div>
+      </div>
       <div class="skill-card">
         <div class="skill-card-icon">📱</div>
         <h3>Mobile Development</h3>
@@ -634,29 +866,12 @@
           <span class="tag">Loxone</span><span class="tag">Modbus TCP</span><span class="tag">PV Systems</span><span class="tag">EEG/Billing API</span>
         </div>
       </div>
-      <div class="skill-card">
-        <div class="skill-card-icon">🤖</div>
-        <h3>AI & Generative AI</h3>
-        <p>
-          LLM gateway architecture with deterministic routing (AWS Bedrock, Claude, Gemini).
-          Production MCP servers — including remote, OAuth-secured servers in the Kubikos platform
-          that expose exercise-curation and training-plan tools directly to Claude, plus one
-          (<a href="https://www.npmjs.com/package/thomas-klaushofer-mcp" target="_blank" style="color:var(--accent);">published on npm</a>).
-          RAG-based FAQ automation. AI-powered exercise creation pipeline: auto-generated descriptions,
-          images (Gemini), and videos (Veo3). AWS Bedrock training-plan engine (create/refine/adapt).
-          Exercise research tool for automated knowledge extraction.
-          ML-based PV energy nowcasting.
-        </p>
-        <div class="tag-list">
-          <span class="tag">Claude API</span><span class="tag">Opus</span><span class="tag">MCP Servers</span><span class="tag">Remote MCP</span><span class="tag">AWS Bedrock</span><span class="tag">Gemini</span><span class="tag">Veo3</span><span class="tag">RAG</span><span class="tag">n8n</span><span class="tag">LLM Routing</span>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-label">03 / Projects</div>
+    <div class="section-label">04 / Projects</div>
     <h2>Selected<br><em>Work</em></h2>
     <div class="projects-list">
 
@@ -664,11 +879,39 @@
         <div class="project-num">001</div>
         <div class="project-content">
           <div class="project-tags">
+            <span class="project-badge badge-oss">Personal</span>
+          </div>
+          <h3>Inbox Hub — Personal AI Assistant</h3>
+          <div class="tag-list" style="margin-bottom: 12px;">
+            <span class="tag">Claude Code headless</span><span class="tag">MCP Server</span><span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">whisper.cpp</span><span class="tag">Microsoft Graph</span><span class="tag">Swift</span>
+          </div>
+          <p class="project-desc">
+            My own AI assistant, running locally on my Mac. It merges mail, chats, calendars, tickets and
+            notes into one calm overview, and Claude (run headless every 15 minutes) triages everything by
+            company, project, priority and deadline and links related threads across sources. Replies are
+            prepared as drafts only — nothing is sent without me. Feature wishes from chats are deduplicated,
+            checked against the code and run through a review stage; missing details become short follow-up
+            questions before a ticket is created. Receipts are matched to the right company and month for
+            bookkeeping, copied only on my click. A sales pipeline view links each lead to the latest real
+            contact across all channels. Voice messages are transcribed locally.
+            <br><br>
+            Security by design: incoming messages are treated as untrusted input, so AI steps that read them
+            get minimal rights (read/search only, write only to a scratch folder); outputs are validated
+            before they are applied; tokens are split by purpose (a draft token that cannot send mail);
+            secrets are masked; the dashboard binds to localhost only. Exposed to Claude via its own MCP server.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-item reveal">
+        <div class="project-num">002</div>
+        <div class="project-content">
+          <div class="project-tags">
             <span class="project-badge badge-founder">Founder</span>
           </div>
           <h3>Kubikos — Fitness Sensorics &amp; AI Platform</h3>
           <div class="tag-list" style="margin-bottom: 12px;">
-            <span class="tag">Flutter</span><span class="tag">nRF52840</span><span class="tag">C++ Firmware</span><span class="tag">AWS</span><span class="tag">BLE</span><span class="tag">Kalman Filter</span><span class="tag">MCP Server</span><span class="tag">AWS Bedrock</span><span class="tag">Gemini</span><span class="tag">Veo3</span>
+            <span class="tag">Flutter</span><span class="tag">nRF52840</span><span class="tag">C++ Firmware</span><span class="tag">AWS</span><span class="tag">BLE</span><span class="tag">Kalman Filter</span><span class="tag">MCP Server</span><span class="tag">AWS Bedrock</span><span class="tag">Gemini</span><span class="tag">Veo3</span><span class="tag">Claude Code</span>
           </div>
           <p class="project-desc">
             Patented (DE 112021007607.8) end-to-end IoT product: K-FORCE PRO sensors (0.1 kg precision,
@@ -676,8 +919,11 @@
             Paris Lodron University). Flutter app, FIT CLOUD B2B platform.
             AI-powered content pipeline: exercise creator workflow generating descriptions, images (Gemini),
             and videos (Veo3) automatically; an AWS Bedrock training-plan engine (create/refine/adapt) that
-            replaced the earlier n8n/Mistral stack; and a production remote MCP server (OAuth) that lets
-            Claude curate exercises/equipment and generate training plans directly.
+            replaced the earlier n8n/Mistral stack, plus AI-generated user exercise drafts; and a production
+            remote MCP server (OAuth, incl. native MCP clients) with an admin tool suite that lets an AI agent
+            curate the exercise and equipment catalogue (safe soft-deletes, re-parenting, backfill worklists).
+            Development runs on versioned Claude Code skills (bug triage, Sentry triage, release notes, deploys)
+            with integration tests as a blocking release gate.
             Partnered with Hammer Sport AG. Piloting with FITINN. FFG-funded energy harvesting R&amp;D.
             Exhibited at FIBO (2024/25/26) and ISPO Munich (2022).
           </p>
@@ -686,27 +932,34 @@
       </div>
 
       <div class="project-item reveal">
-        <div class="project-num">002</div>
+        <div class="project-num">003</div>
         <div class="project-content">
           <div class="project-tags">
-            <span class="project-badge badge-founder">Kubikos</span>
+            <span class="project-badge badge-founder">Co-owner</span>
           </div>
-          <h3>EG Energiemanager — WebTec</h3>
+          <h3>EG Energiemanager &amp; Energy Platform — WebTec</h3>
           <div class="tag-list" style="margin-bottom: 12px;">
-            <span class="tag">Flutter</span><span class="tag">Modbus TCP</span><span class="tag">PV Systems</span><span class="tag">EEG API</span><span class="tag">ML Nowcasting</span>
+            <span class="tag">Flutter</span><span class="tag">Modbus TCP</span><span class="tag">PV Systems</span><span class="tag">EEG API</span><span class="tag">ML Nowcasting</span><span class="tag">AI Ticket Triage</span><span class="tag">MCP</span><span class="tag">AWS CDK</span><span class="tag">Claude Code Subagents</span>
           </div>
           <p class="project-desc">
             Mobile app for Austrian Erneuerbare-Energie-Gemeinschaften (EEG), built for WebTec.
             Real-time display of available community energy, consumption optimisation, and hardware
             configuration. Features ML-based PV generation nowcasting using Open-Meteo weather data
             and EEG billing API integration. Available on App Store and Google Play.
+            <br><br>
+            Around it: a support ticket platform with AI triage (local embeddings for duplicate detection and
+            assignee suggestions, Claude classification on pseudonymised text — suggestions only, with budget
+            alerts) and an MCP endpoint for tickets; a spot-price manager that schedules batteries against
+            day-ahead prices; PV and load forecasting with backtests and a simulation lab for the control chain.
+            The multi-repo platform is developed with Claude Code: a central plan, role-based subagents per repo
+            in their own worktrees, a read-only contract guardian, guard hooks and repo-specific skills.
           </p>
         </div>
         <a href="https://www.web-tec.at/" class="btn btn-ghost" target="_blank" style="align-self:start;">web-tec.at ↗</a>
       </div>
 
       <div class="project-item reveal">
-        <div class="project-num">003</div>
+        <div class="project-num">004</div>
         <div class="project-content">
           <div class="project-tags">
             <span class="project-badge badge-freelance">Freelance</span>
@@ -727,7 +980,7 @@
       </div>
 
       <div class="project-item reveal">
-        <div class="project-num">004</div>
+        <div class="project-num">005</div>
         <div class="project-content">
           <div class="project-tags">
             <span class="project-badge badge-freelance">Freelance</span>
@@ -747,12 +1000,36 @@
         <span class="project-badge badge-freelance" style="align-self:start; height:fit-content;">GMS-Salzburg</span>
       </div>
 
+      <div class="project-item reveal">
+        <div class="project-num">006</div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="project-badge badge-freelance">Freelance</span>
+          </div>
+          <h3>AI Agents, MCP &amp; AI Handbook — Hotel &amp; Clinic Software</h3>
+          <div class="tag-list" style="margin-bottom: 12px;">
+            <span class="tag">AI Agents</span><span class="tag">Human Approval</span><span class="tag">MCP Servers</span><span class="tag">LiteLLM</span><span class="tag">Docs-as-Code</span><span class="tag">Security Audit</span><span class="tag">HL7</span><span class="tag">Playwright</span>
+          </div>
+          <p class="project-desc">
+            AI agents for guest and booking workflows: a triage agent hands over to specialists, tools come from
+            OpenAPI and MCP and are filtered by the user's permissions, and every write action waits for human
+            approval; with a visible, correctable agent memory and cost limits via an LLM gateway.
+            MCP servers on top of existing backends that act with the calling user's token, with hardened auth
+            and per-tool rights. An AI pipeline for the user manual (writer and reviewer prompts, every change
+            as a pull request for human approval, automatic detection of outdated pages and screenshots).
+            Security and architecture audit of a multi-tenant platform, tracked through to verified fixes.
+            Plus long-running HL7 interface work and CI/CD.
+          </p>
+        </div>
+        <span class="project-badge badge-freelance" style="align-self:start; height:fit-content;">GMS-Salzburg</span>
+      </div>
+
     </div>
   </section>
 
   <!-- EXPERIENCE -->
   <section id="experience">
-    <div class="section-label">04 / Experience</div>
+    <div class="section-label">05 / Experience</div>
     <h2>Career<br><em>History</em></h2>
     <div class="exp-list">
 
@@ -772,11 +1049,29 @@
             and training-plan tools directly to Claude. Partnered with Hammer Sport AG;
             piloting with FITINN; prototyping with Gym80. FFG grant recipient (In Situ Energy Harvesting).
             Exhibited at FIBO 2024/25/26 and ISPO Munich 2022. Startup Salzburg FACTORY alumnus,
-            Investors Lounge winner, Startup World Cup 2025 participant. Also developed EG Energiemanager
-            app for WebTec (Startup Salzburg FACTORY+ 2025, Energiemaker track).
+            Investors Lounge winner, Startup World Cup 2025 participant.
           </p>
           <div class="tag-list">
             <span class="tag">Patent Holder</span><span class="tag">Firmware</span><span class="tag">Flutter</span><span class="tag">AWS</span><span class="tag">MCP Server</span><span class="tag">AWS Bedrock</span><span class="tag">Product Strategy</span><span class="tag">FFG Funded</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="company">WebTec</div>
+          <div class="period">2025 — Present</div>
+        </div>
+        <div class="exp-body">
+          <h3>Co-owner &amp; Software / AI Development</h3>
+          <p>
+            Shareholder of WebTec. Built the EG Energiemanager app for renewable energy communities
+            (Startup Salzburg FACTORY+ 2025, Energiemaker track), and since 2026 its wider energy platform:
+            AI ticket triage, spot-price battery scheduling, PV and load forecasting, developed with
+            Claude Code subagents across multiple repositories.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Flutter</span><span class="tag">AI Ticket Triage</span><span class="tag">MCP</span><span class="tag">AWS CDK</span><span class="tag">Claude Code Subagents</span>
           </div>
         </div>
       </div>
@@ -792,10 +1087,12 @@
             Independent consultancy. Long-term client GMS-Salzburg: customer success and engineering
             for Vagus (patient app, HL7 interfaces, deployed across dozens of DACH clinics) and
             partial team lead on Unity (unified platform with LLM routing architecture).
-            Built custom MCP servers and AI automation tooling. AI tooling champion internally.
+            Since mid-2026 focused on AI: agents with human approval gates for hotel software, MCP servers
+            over existing backends, an AI pipeline for the user manual, and a security and architecture
+            audit of the platform. AI tooling champion internally.
           </p>
           <div class="tag-list">
-            <span class="tag">LLM Routing</span><span class="tag">AWS</span><span class="tag">HL7</span><span class="tag">MCP Servers</span><span class="tag">Ruby on Rails</span><span class="tag">AI Tooling</span>
+            <span class="tag">AI Agents</span><span class="tag">MCP Servers</span><span class="tag">LLM Routing</span><span class="tag">Security Audit</span><span class="tag">AWS</span><span class="tag">HL7</span><span class="tag">Ruby on Rails</span><span class="tag">AI Tooling</span>
           </div>
         </div>
       </div>
@@ -862,7 +1159,8 @@
         <div class="exp-body">
           <h3>Technical Trainer</h3>
           <p>
-            Part-time instructor for electrical drives and physics.
+            Part-time instructor for electrical drives and physics. Now also offering talks,
+            workshops and courses on AI — see <a href="#speaking" style="color:var(--accent);">Talks &amp; Workshops</a>.
           </p>
           <div class="tag-list">
             <span class="tag">Teaching</span><span class="tag">Electrical Drives</span><span class="tag">Physics</span>
@@ -875,10 +1173,10 @@
 
   <!-- CONTACT -->
   <section id="contact">
-    <div class="section-label">05 / Contact</div>
+    <div class="section-label">06 / Contact</div>
     <h2>Let's Build<br><em>Something.</em></h2>
     <p class="lead">
-      Open to freelance projects, technical consulting, and strategic partnerships.<br>
+      Open to AI talks and workshops, freelance projects, technical consulting, and strategic partnerships.<br>
       Based in Salzburg — available globally.
     </p>
     <div class="contact-grid reveal">
